@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+    <html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="noindex">
+        <title>RFID探索用ツール</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" rel="stylesheet">
+        <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <script src="js/qrcode.min.js"></script>
+    </head>
+    <body>
+        <header><h1><i class="fa-solid fa-tag"></i>RFID探索用ツール</h1></header>
+        <main>
+            <dialog id="qrModal">
+                <form>
+                    <div class="modal-header">
+                        <h2 id="modalTitle"></h2>
+                        <button value="cancel" formmethod="dialog"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div id="qrCode"></div>
+                    <button id="singleQrCodePrint"><i class="fa-solid fa-print"></i>このQRコードのみを印刷</button>
+                </form>
+            </dialog>
+            <section class="menu">
+                <input type="file" accept=".csv" id="csvFileSelecter" style="display: none;">
+                <label for="csvFileSelecter"><i class="fa-solid fa-file-csv"></i><span id="labelText">CSVファイルを選択</span></label>
+                <button id="printButton"><i class="fa-solid fa-print"></i>印刷</button>
+            </section>
+            <section class="content">
+                <h2><i class="fa-solid fa-magnifying-glass"></i>検索</h2>
+                <form onsubmit="return false">
+                    <input type="text" placeholder="品番" id="productIdSearchBox">
+                    <input type="number" placeholder="枝番" id="seqSearchBox">
+                    <button type="reset" id="resetButton">リセット</button>
+                </form>
+                <table id="table">
+                    <tr><th>品番</th><th>枝番</th><th>探索用ID</th><th>QRコード</th></tr>
+                </table>
+                <div id="errorDialog">
+                    <img src="img/cat.png" alt="(x_x)" id="errorImage">
+                    <span id="errorTitle">CSVファイルを選択してください</span>
+                    <p id="errorMessage">品番・枝番が正しいか、読み込んでいるCSVが最新のものか確認してください</p>
+                </div>
+            </section>
+        </main>
+        <script src="js/app.js"></script>
+    </body>
+</html>
